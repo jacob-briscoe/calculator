@@ -3,7 +3,7 @@ name: PR-Check
 on: [pull_request]
 
 jobs:
-  lint:
+  PR-Check:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +24,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Test
+        run: npm run test:once
