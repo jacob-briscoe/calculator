@@ -9,6 +9,12 @@ const StyledDisplay = styled.div`
   border-radius: 10px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+    padding: 2.5rem;
+  }
 `;
 
 export function Display() {

@@ -192,7 +192,7 @@ const GlobalStyle = styled.createGlobalStyle`
 
     #root {
       min-width: 375px;
-      max-width: 445px;
+      max-width: 493px;
       max-height: 650px;
     }
   }

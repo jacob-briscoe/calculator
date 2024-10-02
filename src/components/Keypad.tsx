@@ -6,10 +6,6 @@ const StyledKeypad = styled.fieldset`
   grid-template-columns: repeat(4, 60px);
   grid-auto-rows: minmax(60px, auto);
 
-  /* grid-template-columns: repeat(4, 60px);
-  grid-template-rows: repeat(5, 59px); */
-
-  /* gap: 0.8rem; */
   column-gap: 0.8rem;
   row-gap: 1rem;
 
@@ -22,8 +18,8 @@ const StyledKeypad = styled.fieldset`
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(60px, auto);
 
-    /* column-gap: 1.5rem;
-    row-gap: 1.5rem; */
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
   }
 `;
 
