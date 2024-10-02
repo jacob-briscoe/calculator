@@ -7,7 +7,6 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   min-height: 55px;
-  /* margin-bottom: 1.75rem; */
 `;
 
 const StyledAppName = styled.h1`
