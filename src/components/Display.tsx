@@ -1,3 +1,4 @@
+import type { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 const StyledDisplay = styled.div`
@@ -17,6 +18,10 @@ const StyledDisplay = styled.div`
   }
 `;
 
-export function Display() {
-  return <StyledDisplay>399,981</StyledDisplay>;
+type DisplayProps = PropsWithChildren & {
+  output: string;
+};
+
+export function Display({ output }: DisplayProps) {
+  return <StyledDisplay>{output}</StyledDisplay>;
 }
