@@ -14,7 +14,7 @@ const StyledKeypad = styled.fieldset`
   border-radius: 10px;
   height: 100%;
 
-  @media (min-width: 375px) {
+  @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(60px, auto);
 

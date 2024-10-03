@@ -5,7 +5,7 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
 `;
 
 const StyledAppName = styled.h1`

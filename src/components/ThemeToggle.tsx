@@ -5,9 +5,9 @@ const StyledRange = styled.input`
   -webkit-appearance: none;
   appearance: none;
   width: 70px;
-  height: 28px;
+  height: 24px;
   background: ${({ theme }) => theme.backgrounds.toggleKeypad};
-  border-radius: 14px;
+  border-radius: 12px;
   outline: none;
   padding-left: 5px;
   padding-right: 5px;
@@ -17,8 +17,8 @@ const StyledRange = styled.input`
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
     background: ${({ theme }) => theme.keys.backgroundToggle};
     border-radius: 50%;
 
@@ -28,8 +28,8 @@ const StyledRange = styled.input`
   }
 
   &::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
     background: ${({ theme }) => theme.keys.backgroundToggle};
     border-radius: 50%;
     border: none;
@@ -70,7 +70,7 @@ const StyledSwitchToggleTickList = styled.ul`
 const StyledThemeToggle = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: auto 1fr;
   column-gap: 1.5rem;
 `;
 
