@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "./Button";
+import type { PropsWithChildren } from "react";
 
 const StyledKeypad = styled.fieldset`
   display: grid;
@@ -27,27 +28,45 @@ const LastRowButton = styled(Button)`
   grid-column: span 2;
 `;
 
-export function Keypad() {
+type KeypadProps = PropsWithChildren & {
+  onInputKey: (key: string) => void;
+  onDeleteKey: () => void;
+  onResetKey: () => void;
+  onCalculateKey: () => void;
+};
+
+export function Keypad({
+  onCalculateKey,
+  onDeleteKey,
+  onInputKey,
+  onResetKey,
+}: KeypadProps) {
   return (
     <StyledKeypad>
-      <Button>7</Button>
-      <Button>8</Button>
-      <Button>9</Button>
-      <Button functionButton>del</Button>
-      <Button>4</Button>
-      <Button>5</Button>
-      <Button>6</Button>
-      <Button>+</Button>
-      <Button>1</Button>
-      <Button>2</Button>
-      <Button>3</Button>
-      <Button>-</Button>
-      <Button>.</Button>
-      <Button>0</Button>
-      <Button>/</Button>
-      <Button>x</Button>
-      <LastRowButton functionButton>reset</LastRowButton>
-      <LastRowButton equalsButton>=</LastRowButton>
+      <Button onClick={() => onInputKey("7")}>7</Button>
+      <Button onClick={() => onInputKey("8")}>8</Button>
+      <Button onClick={() => onInputKey("9")}>9</Button>
+      <Button onClick={() => onDeleteKey()} functionButton>
+        del
+      </Button>
+      <Button onClick={() => onInputKey("4")}>4</Button>
+      <Button onClick={() => onInputKey("5")}>5</Button>
+      <Button onClick={() => onInputKey("6")}>6</Button>
+      <Button onClick={() => onInputKey("+")}>+</Button>
+      <Button onClick={() => onInputKey("1")}>1</Button>
+      <Button onClick={() => onInputKey("2")}>2</Button>
+      <Button onClick={() => onInputKey("3")}>3</Button>
+      <Button onClick={() => onInputKey("-")}>-</Button>
+      <Button onClick={() => onInputKey(".")}>.</Button>
+      <Button onClick={() => onInputKey("0")}>0</Button>
+      <Button onClick={() => onInputKey("/")}>/</Button>
+      <Button onClick={() => onInputKey("*")}>x</Button>
+      <LastRowButton onClick={() => onResetKey()} functionButton>
+        reset
+      </LastRowButton>
+      <LastRowButton onClick={() => onCalculateKey()} equalsButton>
+        =
+      </LastRowButton>
     </StyledKeypad>
   );
 }
