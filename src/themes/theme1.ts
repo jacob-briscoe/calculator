@@ -1,6 +1,6 @@
 import { type DefaultTheme } from "styled-components";
 
-export const theme1: DefaultTheme = {
+export const theme1: Readonly<DefaultTheme> = {
   id: 1,
   backgrounds: {
     main: "var(--very-dark-desaturated-blue)",
@@ -16,8 +16,11 @@ export const theme1: DefaultTheme = {
     lightShadow: "var(--grayish-orange)",
   },
   text: {
-    dark: "var(--very-dark-grayish-blue)",
-    veryLight: "var(--white)",
-    light: "var(--white)",
+    appName: "var(--white)",
+    themeToggle: "var(--white)",
+    display: "var(--white)",
+    equalsKey: "var(--white)",
+    functionKey: "var(--white)",
+    numericKey: "var(--very-dark-grayish-blue)",
   },
 };

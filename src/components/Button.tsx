@@ -6,7 +6,7 @@ const BaseButtonStyled = styled.button`
   font-size: 2rem;
   font-weight: 700;
   background-color: ${({ theme }) => theme.keys.lightBackground};
-  color: ${({ theme }) => theme.text.dark};
+  color: ${({ theme }) => theme.text.numericKey};
   border-radius: 5px;
   padding: 10px;
   border: none;
@@ -31,13 +31,13 @@ const BaseNonNumericButton = styled(BaseButtonStyled)`
 
 const EqualsButton = styled(BaseNonNumericButton)`
   background-color: ${({ theme }) => theme.keys.backgroundToggle};
-  color: ${({ theme }) => theme.text.light};
+  color: ${({ theme }) => theme.text.equalsKey};
   box-shadow: 0 4px 0px ${({ theme }) => theme.keys.darkShadow};
 `;
 
 const FunctionButton = styled(BaseNonNumericButton)`
   background-color: ${({ theme }) => theme.keys.background};
-  color: ${({ theme }) => theme.text.light};
+  color: ${({ theme }) => theme.text.functionKey};
   box-shadow: 0 4px 0px ${({ theme }) => theme.keys.shadow};
 `;
 

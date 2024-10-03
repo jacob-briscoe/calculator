@@ -1,5 +1,6 @@
-import { useMemo, useState, type ComponentPropsWithRef } from "react";
+import { useMemo } from "react";
 import styled from "styled-components";
+import { useAppTheme } from "../hooks";
 
 const StyledRange = styled.input`
   -webkit-appearance: none;
@@ -43,7 +44,7 @@ const StyledRange = styled.input`
 const StyledThemeToggleLabel = styled.h2`
   justify-self: flex-end;
   align-self: center;
-  color: ${({ theme }) => theme.text.light};
+  color: ${({ theme }) => theme.text.themeToggle};
   text-transform: uppercase;
   font-size: 0.75rem;
   font-weight: 600;
@@ -51,7 +52,7 @@ const StyledThemeToggleLabel = styled.h2`
 
 const StyledSwitchToggleTickLabel = styled.label`
   cursor: pointer;
-  color: ${({ theme }) => theme.text.light};
+  color: ${({ theme }) => theme.text.themeToggle};
   font-size: 0.85rem;
   font-weight: 600;
   padding-left: 9px;
@@ -74,29 +75,22 @@ const StyledThemeToggle = styled.div`
   column-gap: 1.5rem;
 `;
 
-type ThemeToggleProps = ComponentPropsWithRef<"div"> & {
-  themeCount?: number;
-};
-
-export function ThemeToggle({ themeCount = 3 }: ThemeToggleProps) {
-  const [selectedTheme, setSelectedTheme] = useState(1);
+export function ThemeToggle() {
+  const { changeTheme, theme, themeOptions: selectableThemes } = useAppTheme();
 
   const themeOptions = useMemo(
     () =>
-      new Array(themeCount).fill(1).map((firstTheme, index) => {
-        const themeID = firstTheme + index;
-        return (
-          <li key={themeID}>
-            <StyledSwitchToggleTickLabel
-              htmlFor="theme"
-              onClick={() => setSelectedTheme(themeID)}
-            >
-              {themeID}
-            </StyledSwitchToggleTickLabel>
-          </li>
-        );
-      }),
-    [themeCount],
+      selectableThemes.map((themeID) => (
+        <li key={themeID}>
+          <StyledSwitchToggleTickLabel
+            htmlFor="theme"
+            onClick={() => changeTheme(themeID)}
+          >
+            {themeID}
+          </StyledSwitchToggleTickLabel>
+        </li>
+      )),
+    [selectableThemes, changeTheme],
   );
 
   return (
@@ -107,9 +101,9 @@ export function ThemeToggle({ themeCount = 3 }: ThemeToggleProps) {
         id="theme"
         type="range"
         min="1"
-        max={themeCount}
-        value={selectedTheme}
-        onChange={(evt) => setSelectedTheme(evt.target.valueAsNumber)}
+        max={selectableThemes.length}
+        value={theme.id}
+        onChange={({ target }) => changeTheme(target.valueAsNumber)}
       />
     </StyledThemeToggle>
   );
