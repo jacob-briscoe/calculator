@@ -17,9 +17,12 @@ declare module "styled-components" {
       lightShadow: string;
     };
     text: {
-      veryLight: string;
-      light: string;
-      dark: string;
+      appName: string;
+      themeToggle: string;
+      display: string;
+      numericKey: string;
+      functionKey: string;
+      equalsKey: string;
     };
   }
 }

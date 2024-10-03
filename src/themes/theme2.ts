@@ -16,8 +16,11 @@ export const theme2: Readonly<DefaultTheme> = {
     lightShadow: "var(--dark-grayish-orange)",
   },
   text: {
-    dark: "var(--very-dark-grayish-yellow)",
-    veryLight: "var(--white)",
-    light: "var(--white)",
+    appName: "var(--very-dark-grayish-yellow)",
+    themeToggle: "var(--very-dark-grayish-yellow)",
+    display: "var(--very-dark-grayish-yellow)",
+    equalsKey: "var(--white)",
+    functionKey: "var(--white)",
+    numericKey: "var(--very-dark-grayish-yellow)",
   },
 };

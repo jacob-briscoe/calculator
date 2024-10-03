@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledDisplay = styled.div`
   background-color: ${({ theme }) => theme.backgrounds.screen};
-  color: ${({ theme }) => theme.text.veryLight};
+  color: ${({ theme }) => theme.text.display};
   font-size: 2.4rem;
   font-weight: 600;
   padding: 1.75rem;

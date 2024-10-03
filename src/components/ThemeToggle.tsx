@@ -44,7 +44,7 @@ const StyledRange = styled.input`
 const StyledThemeToggleLabel = styled.h2`
   justify-self: flex-end;
   align-self: center;
-  color: ${({ theme }) => theme.text.light};
+  color: ${({ theme }) => theme.text.themeToggle};
   text-transform: uppercase;
   font-size: 0.75rem;
   font-weight: 600;
@@ -52,7 +52,7 @@ const StyledThemeToggleLabel = styled.h2`
 
 const StyledSwitchToggleTickLabel = styled.label`
   cursor: pointer;
-  color: ${({ theme }) => theme.text.light};
+  color: ${({ theme }) => theme.text.themeToggle};
   font-size: 0.85rem;
   font-weight: 600;
   padding-left: 9px;

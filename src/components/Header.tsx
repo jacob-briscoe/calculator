@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
 const StyledAppName = styled.h1`
   font-size: 1.85rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.text.light};
+  color: ${({ theme }) => theme.text.appName};
 `;
 
 export function Header() {
