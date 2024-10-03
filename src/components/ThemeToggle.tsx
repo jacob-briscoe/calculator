@@ -1,48 +1,116 @@
-// const StyledThemeToggle = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 1.5rem;
-// `;
+import { useMemo, useState, type ComponentPropsWithRef } from "react";
+import styled from "styled-components";
 
-// const ThemeLabel = styled.span`
-//   font-size: 0.75rem;
-//   font-weight: 600;
-//   color: ${({ theme }) => theme.text.veryLight};
-//   text-transform: uppercase;
-// `;
+const StyledRange = styled.input`
+  -webkit-appearance: none;
+  appearance: none;
+  width: 70px;
+  height: 28px;
+  background: ${({ theme }) => theme.backgrounds.toggleKeypad};
+  border-radius: 14px;
+  outline: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
 
-// const ToggleSwitch = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: ${({ theme }) => theme.keys.backgroundToggle};
+    border-radius: 50%;
 
-// const ToggleSwitchTicks = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   margin-left: 5px;
-//   margin-right: 5px;
-// `;
+    &:hover {
+      filter: brightness(1.4);
+    }
+  }
 
-// const ToggleSwitchTick = styled.span`
-//   font-size: 0.75rem;
-//   font-weight: 600;
-//   color: ${({ theme }) => theme.text.veryLight};
-// `;
+  &::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: ${({ theme }) => theme.keys.backgroundToggle};
+    border-radius: 50%;
+    border: none;
 
-// TODOJ: see https://cssdeck.com/labs/ufct35ys5t
-export function ThemeToggle() {
+    &:hover {
+      filter: brightness(1.4);
+    }
+  }
+`;
+
+const StyledThemeToggleLabel = styled.h2`
+  justify-self: flex-end;
+  align-self: center;
+  color: ${({ theme }) => theme.text.light};
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+`;
+
+const StyledSwitchToggleTickLabel = styled.label`
+  cursor: pointer;
+  color: ${({ theme }) => theme.text.light};
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding-left: 9px;
+  padding-right: 9px;
+`;
+
+const StyledSwitchToggleTickList = styled.ul`
+  grid-column: 2;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70px;
+`;
+
+const StyledThemeToggle = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 1.5rem;
+`;
+
+type ThemeToggleProps = ComponentPropsWithRef<"div"> & {
+  themeCount?: number;
+};
+
+export function ThemeToggle({ themeCount = 3 }: ThemeToggleProps) {
+  const [selectedTheme, setSelectedTheme] = useState(1);
+
+  const themeOptions = useMemo(
+    () =>
+      new Array(themeCount).fill(1).map((firstTheme, index) => {
+        const themeID = firstTheme + index;
+        return (
+          <li key={themeID}>
+            <StyledSwitchToggleTickLabel
+              htmlFor="theme"
+              onClick={() => setSelectedTheme(themeID)}
+            >
+              {themeID}
+            </StyledSwitchToggleTickLabel>
+          </li>
+        );
+      }),
+    [themeCount],
+  );
+
   return (
-    <div>Toggle</div>
-    // <StyledThemeToggle>
-    //   <ThemeLabel>theme</ThemeLabel>
-    //   <ToggleSwitch>
-    //     <ToggleSwitchTicks>
-    //       <ToggleSwitchTick>1</ToggleSwitchTick>
-    //       <ToggleSwitchTick>2</ToggleSwitchTick>
-    //       <ToggleSwitchTick>3</ToggleSwitchTick>
-    //     </ToggleSwitchTicks>
-    //     <img src="fake-toggle.png" />
-    //   </ToggleSwitch>
-    // </StyledThemeToggle>
+    <StyledThemeToggle>
+      <StyledSwitchToggleTickList>{themeOptions}</StyledSwitchToggleTickList>
+      <StyledThemeToggleLabel>theme</StyledThemeToggleLabel>
+      <StyledRange
+        id="theme"
+        type="range"
+        min="1"
+        max={themeCount}
+        value={selectedTheme}
+        onChange={(evt) => setSelectedTheme(evt.target.valueAsNumber)}
+      />
+    </StyledThemeToggle>
   );
 }
