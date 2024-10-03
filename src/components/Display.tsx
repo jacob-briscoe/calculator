@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 import styled from "styled-components";
+import { DataTestID } from "../helpers";
 
 const StyledDisplay = styled.div`
   background-color: ${({ theme }) => theme.backgrounds.screen};
@@ -23,5 +24,7 @@ type DisplayProps = PropsWithChildren & {
 };
 
 export function Display({ output }: DisplayProps) {
-  return <StyledDisplay>{output}</StyledDisplay>;
+  return (
+    <StyledDisplay data-testid={DataTestID.Display}>{output}</StyledDisplay>
+  );
 }
